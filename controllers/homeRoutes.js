@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
+// Dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -63,24 +64,24 @@ router.get('/signup', (req, res) => {
 });
 
 // Dashboard shows button to create new, and lists personal blog posts. When clicked, taken to /edit/:id
-router.get('/dashboard', withAuth, async (req, res) => {
+// New post: title and content inputs w/ create button
+router.get('/new', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const postData = await Post.findByPk(req.session.user_id, {
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
     });
 
-    const post = postData.get({ plain: true });
+    const user = userData.get({ plain: true });
 
-    res.render('dashboard', {
-      ...post,
+    res.render('new', {
+      ...user,
       logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-// New post: title and content inputs w/ create button
 
 // edit/:id with buttons to update and delete
 

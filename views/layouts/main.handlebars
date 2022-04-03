@@ -10,25 +10,33 @@
 
   <body>
     <div class='flex-column justify-space-around'>
+
+      <nav>
+        <div class='d-flex'>
+          <div class='d-flex'>
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+
+              <a href='/dashboard'>dashboard</a>
+              |
+              <a href='/new'>new post</a>
+              |
+              <a href='/'>home</a>
+              |
+              <button class='no-button' id='logout'>logout</button>
+
+            {{else}}
+              <a href='/login'>login</a>
+              |
+              <a href='/signup'>signup</a>
+            {{/if}}
+          </div></div>
+      </nav>
       <header class='display-flex justify-space-between align-center p-2'>
         <h1>
           <span role='img' aria-label='laptop'>💻</span>
           Tech Blog
         </h1>
-        <nav>
-          <!-- Conditionally render login or logout links -->
-          {{#if logged_in}}
-            <a href='/dashboard'>dashboard</a>
-            |
-            <a href='/'>home</a>
-            |
-            <button class='no-button' id='logout'>logout</button>
-          {{else}}
-            <a href='/login'>login</a>
-            |
-            <a href='/signup'>signup</a>
-          {{/if}}
-        </nav>
       </header>
       <main class='container container-fluid mt-5'>
         <!-- Render the sub layout -->
