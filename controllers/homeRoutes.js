@@ -51,6 +51,17 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Signup page
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('signup');
+});
+
 // Dashboard shows button to create new, and lists personal blog posts. When clicked, taken to /edit/:id
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
