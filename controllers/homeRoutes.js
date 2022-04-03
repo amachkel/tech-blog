@@ -1,11 +1,20 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Post } = require('../models');
 const withAuth = require('../utils/auth');
+// pages: homepage, login, sign up, dashboard, edit/:id, new, post/:id
 
+// not logged in, you can only see homepage and login page. When you click posts, you can see content, but can't comment.
+// Homepage
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage', { 
-      logged_in: req.session.logged_in 
+    const postData = await Post.findAll({
+      include: [{ model: User, attributes: ['name'] }],
+    });
+    // Serialize data so the template can read it
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('homepage', {
+      posts,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -13,32 +22,56 @@ router.get('/', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] }
+      attributes: { exclude: ['password'] },
     });
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('dashboard', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// Login page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/dashboard');
     return;
   }
 
   res.render('login');
 });
 
+// Dashboard shows button to create new, and lists personal blog posts. When clicked, taken to /edit/:id
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('dashboard', {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+// New post: title and content inputs w/ create button
+
+// edit/:id with buttons to update and delete
+
+//post/:id shows blog post, content, and comments; can add comment if signed in. input box and submit button.
 module.exports = router;
