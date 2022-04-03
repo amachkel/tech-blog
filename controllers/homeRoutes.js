@@ -55,14 +55,14 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
+    const postData = await Post.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
     });
 
-    const user = userData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
     res.render('dashboard', {
-      ...user,
+      ...post,
       logged_in: true,
     });
   } catch (err) {
@@ -74,4 +74,22 @@ router.get('/dashboard', withAuth, async (req, res) => {
 // edit/:id with buttons to update and delete
 
 //post/:id shows blog post, content, and comments; can add comment if signed in. input box and submit button.
+router.get('/post/:id', async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{ model: User, attributes: ['name'] }],
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render('post', {
+      ...post,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
