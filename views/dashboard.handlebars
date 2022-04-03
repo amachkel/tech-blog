@@ -9,17 +9,14 @@
       {{#each posts as |post|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <h4><a href='/post/{{post.id}}'>{{post.name}}</a></h4>
+            <h4><a href='/post/{{post.id}}'>{{post.title}}</a></h4>
           </div>
           <div class='col-md-4'>
             <button
               class='btn btn-sm btn-danger delete'
               data-id='{{post.id}}'
             >DELETE</button>
-            <button
-              class='btn btn-sm btn-primary edit'
-              data-id='{{post.id}}'
-            >Edit</button>
+            <button class='btn btn-sm btn-primary edit'>Edit</button>
           </div>
         </div>
       {{/each}}
