@@ -1,7 +1,7 @@
 <div class='col-md-9'>
   <h3>Edit Your Post:</h3>
 
-  <form class='form edit-post-form'>
+  <form class='form edit-post-form' data-id={{id}}>
     <div class='form-group'>
       <label for='edit-title'>Post Title:</label>
       <input
@@ -10,7 +10,7 @@
         id='edit-title'
         name='edit-title'
         {{!-- data-id='{{id}}' --}}
-        value='{{title}}'
+        value={{title}}
       />
 
     </div>
@@ -24,13 +24,8 @@
       >{{content}}</textarea>
     </div>
     <div class='form-group'>
-
-      <button
-        type='submit'
-        class='btn btn-primary'
-        data-id='{{id}}'
-      >Update</button>
+      <button type='submit' class='btn btn-primary'>Update</button>
     </div>
   </form>
 </div>
-<script src='./js/edit.js'></script>
+<script src='/js/edit.js'></script>

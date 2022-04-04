@@ -34,12 +34,10 @@ router.put('/:id', async (req, res) => {
       {
         title: req.body.title,
         content: req.body.content,
-        user_id: req.session.user_id,
       },
       {
         where: {
           id: req.params.id,
-          user_id: req.session.user_id,
         },
       }
     );
