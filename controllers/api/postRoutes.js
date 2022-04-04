@@ -26,6 +26,30 @@ router.post('/', async (req, res) => {
   }
 });
 
+// update /api/posts/:id
+router.put('/:id', async (req, res) => {
+  console.log('put request called');
+  try {
+    const updatePost = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+        user_id: req.session.user_id,
+      },
+      {
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id,
+        },
+      }
+    );
+
+    res.status(200).json(updatePost);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 //api/posts/:id
 router.delete('/:id', withAuth, async (req, res) => {
   try {

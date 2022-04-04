@@ -1,0 +1,36 @@
+<div class='col-md-9'>
+  <h3>Edit Your Post:</h3>
+
+  <form class='form edit-post-form'>
+    <div class='form-group'>
+      <label for='edit-title'>Post Title:</label>
+      <input
+        class='form-input'
+        type='text'
+        id='edit-title'
+        name='edit-title'
+        {{!-- data-id='{{id}}' --}}
+        value='{{title}}'
+      />
+
+    </div>
+    <div class='form-group'>
+      <label for='edit-content'>content:</label>
+      <textarea
+        class='edit-input'
+        id='edit-content'
+        name='edit-content'
+        {{!-- data-id='{{id}}' --}}
+      >{{content}}</textarea>
+    </div>
+    <div class='form-group'>
+
+      <button
+        type='submit'
+        class='btn btn-primary'
+        data-id='{{id}}'
+      >Update</button>
+    </div>
+  </form>
+</div>
+<script src='./js/edit.js'></script>

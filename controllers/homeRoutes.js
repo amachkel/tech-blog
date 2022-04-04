@@ -8,7 +8,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [{ model: User, attributes: ['name'] }],
+      include: [{ model: User }],
     });
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -84,8 +84,23 @@ router.get('/new', withAuth, async (req, res) => {
   }
 });
 
-// edit/:id with buttons to update and delete
+// edit/:id
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{ model: User }],
+    });
 
+    const post = postData.get({ plain: true });
+    res.render('edit', {
+      ...post,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 //post/:id shows blog post, content, and comments; can add comment if signed in. input box and submit button.
 router.get('/post/:id', async (req, res) => {
   try {

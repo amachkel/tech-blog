@@ -16,12 +16,15 @@
               class='btn btn-sm btn-danger delete'
               data-id='{{post.id}}'
             >DELETE</button>
-            <button class='btn btn-sm btn-primary edit'>Edit</button>
+            <a href='/edit/{{id}}'>
+              <button
+                class='btn btn-sm btn-primary edit'
+                data-id='{{post.id}}'
+              >Edit</button></a>
           </div>
         </div>
       {{/each}}
     </div>
   {{/if}}
 </div>
-
 <script src='./js/dashboard.js'></script>
