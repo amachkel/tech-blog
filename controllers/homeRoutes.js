@@ -109,15 +109,20 @@ router.get('/post/:id', async (req, res) => {
       include: [
         { model: User, attributes: ['name'] },
         // this broke the page
-        // { model: Comment, attributes: ['id', 'content', 'user_id'] },
+        {
+          model: Comment,
+          attributes: ['id', 'content', 'user_id', 'post_id', 'date_created'],
+          include: [{ model: User, attributes: ['name'] }],
+        },
       ],
     });
-    // const commentData = await Comment.findAll()
+    // const commentData = await Comment.findAll();
     const post = postData.get({ plain: true });
-    // const comment =
+    // const comments = commentData.get({ plain: true });
+    console.log(postData);
     res.render('post', {
       ...post,
-      // comment,
+      // ...comments,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

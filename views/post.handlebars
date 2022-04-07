@@ -1,4 +1,4 @@
-<div class='col-md-9'>
+<div class='container'>
   <div class='card'>
     <header class='card-header'>
       <p class='card-header-title'>
@@ -19,15 +19,13 @@
         </span></a>
     </footer>
   </div>
-  <div class='col-md-9 comment-list'>
-    <h3>Comments</h3>
 
     {{#each comments as |comment|}}
       <div class='card'>
         <div class='card-content'>
           <div class='content'>
-            <p>{{content}}</p>
-            <p>Posted by {{user.name}} on {{format_date date_created}}</p>
+            <p>{{comment.content}}</p>
+            <p>Posted by {{comment.user.name}} on {{format_date comment.date_created}}</p>
           </div>
         </div>
         <footer class='card-footer'>
@@ -38,17 +36,22 @@
       </div>
     {{/each}}
   </div>
-  <form class='form new-comment-form'>
-    <div class='form-group'>
-      <label for='comment-content'>Add a Comment:</label>
+  <form class='column is-half is-offset-one-quarter box new-comment-form p-4'>
+ <div class='field'>
+   <input type="text" id='post-id' value={{id}} hidden='hidden'/>
       <textarea
-        class='form-input'
+        class='textarea'
         id='comment-content'
-        name='content'
+        name="content"
+        placeholder='Add a comment'
       ></textarea>
     </div>
-    <div class='form-group'>
-      <button type='submit' class='btn btn-custom'>Create</button>
+ <div class='field'>
+      <p class='control'>
+        <button class='button is-primary' type='submit'>
+          Create
+        </button>
+      </p>
     </div>
   </form>
 </div>

@@ -28,7 +28,12 @@
                 data-id='{{post.id}}'
                 class='card-footer-item'
               >Edit</a>
-              <a href='' data-id='{{post.id}}' class='card-footer-item'>
+              <a
+                {{! href='/dashboard' }}
+                data-id='{{post.id}}'
+                class='card-footer-item'
+                id='delete'
+              >
                 Delete</a>
             </footer>
           </div>

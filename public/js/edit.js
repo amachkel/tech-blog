@@ -2,8 +2,8 @@ const editButtonHandler = async (event) => {
   event.preventDefault();
 
   console.log('edit btn function called');
-  const title = document.querySelector('#edit-title').value.trim();
-  const content = document.querySelector('#edit-content').value.trim();
+  const title = document.querySelector('#edit-title').value;
+  const content = document.querySelector('#edit-content').value;
   if (title && content) {
     console.log(event.target);
     const id = event.target.getAttribute('data-id');
@@ -18,7 +18,7 @@ const editButtonHandler = async (event) => {
     if (response.ok) {
       document.location.replace(`/dashboard`);
     } else {
-      alert('Failed to update post');
+      alert('Failed to update post. ');
     }
   } else {
     console.log('if statement did not pass');

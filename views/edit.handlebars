@@ -1,28 +1,21 @@
-<div class='col-md-9'>
-  <h3>Edit Your Post:</h3>
-
-  <form class='form edit-post-form' data-id={{id}}>
-    <div class='form-group'>
-      <label for='edit-title'>Post Title:</label>
-      <input
-        class='form-input'
-        type='text'
-        id='edit-title'
-        name='edit-title'
-        value={{title}}
-      />
-
+<div class='columns'>
+  <form
+    class='column is-half is-offset-one-quarter box edit-post-form p-4'
+    data-id={{id}}
+  >
+    <div class='field'>
+      <input class='input' type='text' id='edit-title' value={{title}} />
     </div>
-    <div class='form-group'>
-      <label for='edit-content'>content:</label>
-      <textarea
-        class='edit-input'
-        id='edit-content'
-        name='edit-content'
-      >{{content}}</textarea>
+
+    <div class='field'>
+      <textarea class='textarea' id='edit-content'>{{content}}</textarea>
     </div>
-    <div class='form-group'>
-      <button type='submit' class='btn btn-primary'>Update</button>
+    <div class='field'>
+      <p class='control'>
+        <button class='button is-primary' type='submit'>
+          Update
+        </button>
+      </p>
     </div>
   </form>
 </div>
