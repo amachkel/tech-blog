@@ -1,30 +1,40 @@
-<div class='row'>
-  <div class='col-auto'>
-    <h2>Welcome, {{name}}!</h2>
-  </div>
+<div>
+  <section class='section'>
+    <h1 class='title'>Hello <strong>{{name}},</strong></h1>
+    <h2 class='subtitle'>
+      Welcome to your dashboard.
+    </h2>
+  </section>
   {{#if posts.length}}
-    <div class='col-md-6 post-list'>
-      <h3>Current posts:</h3>
-
+    <main class='container container-fluid mt-5'>
       {{#each posts as |post|}}
-        <div class='row mb-2'>
-          <div class='col-md-8'>
-            <h4><a href='/post/{{post.id}}'>{{post.title}}</a></h4>
-          </div>
-          <div class='col-md-4'>
-            <button
-              class='btn btn-sm btn-danger delete'
-              data-id='{{post.id}}'
-            >DELETE</button>
-            <a href='/edit/{{id}}'>
-              <button
-                class='btn btn-sm btn-primary edit'
+
+        <div class='post'>
+          <div class='center'>
+            <div class='card'>
+              <header class='card-header'>
+                <p class='card-header-title'>
+                  <a href='/post/{{post.id}}'>{{post.title}}</a>
+                </p>
+              </header>
+              <div class='card-body'>
+                <p>Posted on
+                  {{format_date post.date_created}}</p>
+              </div>
+            </div>
+            <footer class='card-footer'>
+              <a
+                href='/edit/{{id}}'
                 data-id='{{post.id}}'
-              >Edit</button></a>
+                class='card-footer-item'
+              >Edit</a>
+              <a href='' data-id='{{post.id}}' class='card-footer-item'>
+                Delete</a>
+            </footer>
           </div>
         </div>
       {{/each}}
-    </div>
+    </main>
   {{/if}}
 </div>
 <script src='./js/dashboard.js'></script>
