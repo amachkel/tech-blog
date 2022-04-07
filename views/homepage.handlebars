@@ -1,12 +1,12 @@
-<!-- Loop over each object in the projects array -->
+<!-- Loop over each object in the posts array -->
 {{#each posts as |post|}}
-  <div class='row mb-4 project'>
-    <div class='col-md-9 justify-content-center'>
-      <div class='card card-wrapper'>
-        <h2 class='m-4 align-content-center'>
+  <div class='post'>
+    <div class='center'>
+      <div class='card'>
+        <h2 class='center'>
           <a href='/post/{{post.id}}'>{{post.title}}</a>
         </h2>
-        <div class='card-body m-4'>
+        <div class='card-body'>
           <p>Posted by
             {{post.user.name}}
             on

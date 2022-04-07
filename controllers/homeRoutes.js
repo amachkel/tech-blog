@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 // pages: homepage, login, sign up, dashboard, edit/:id, new, post/:id
 
@@ -101,18 +101,23 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-//post/:id shows blog post, content, and comments; can add comment if signed in. input box and submit button.
+//post/:id supposed to show blog post, content, and comments; can add comment if signed in. input box and submit button.
 router.get('/post/:id', async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const postData = await Post.findByPk(req.params.id, {
-      include: [{ model: User, attributes: ['name'] }],
+      include: [
+        { model: User, attributes: ['name'] },
+        // this broke the page
+        // { model: Comment, attributes: ['id', 'content', 'user_id'] },
+      ],
     });
-
+    // const commentData = await Comment.findAll()
     const post = postData.get({ plain: true });
-
+    // const comment =
     res.render('post', {
       ...post,
+      // comment,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
