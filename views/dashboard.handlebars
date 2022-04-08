@@ -11,12 +11,12 @@
 
         <div class='post'>
           <div class='center'>
-            <div class='card'>
+            <div class='card'><a href='/post/{{post.id}}'>
               <header class='card-header'>
-                <p class='card-header-title'>
-                  <a href='/post/{{post.id}}'>{{post.title}}</a>
+                <p class='card-header-title has-text-weight-bold'>
+                  {{post.title}}
                 </p>
-              </header>
+              </header></a>
               <div class='card-body'>
                 <p>Posted on
                   {{format_date post.date_created}}</p>
@@ -28,9 +28,7 @@
                 data-id='{{post.id}}'
                 class='card-footer-item'
               >Edit</a>
-              <a
-                {{! href='/dashboard' }}
-                data-id='{{post.id}}'
+              <a data-id='{{post.id}}'
                 class='card-footer-item'
                 id='delete'
               >
@@ -39,6 +37,7 @@
           </div>
         </div>
       {{/each}}
+      {{else}}<p class="pl-6">It looks like you haven't posted anything yet.</p>
     </main>
   {{/if}}
 </div>

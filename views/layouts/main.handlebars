@@ -4,9 +4,16 @@
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Tech Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3c06b4aef0.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css' />
     <link rel='stylesheet' href='/css/style.css' />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
 </head>
 
 <body>
@@ -56,13 +63,10 @@
     </div>
     </div>
 </nav>
-<section class="hero is-small is-primary">
+<section class="hero">
     <div class="hero-body has-text-centered">
-        <p class="title">
+        <p class="title has-text-white">
             Tech Blog
-        </p>
-        <p class="subtitle">
-            <span role='img' aria-label='laptop'>💻</span>
         </p>
     </div>
 </section>
@@ -71,7 +75,18 @@
     {{{body}}}
 </main>
 <footer>
-
+ <div class="content has-text-centered">
+    <p>
+      <a href="https://bulma.io">
+  <img
+    src="https://bulma.io/images/made-with-bulma.png"
+    alt="Made with Bulma"
+    width="128"
+    height="24">
+    </p>
+    <a href="https://www.flaticon.com/free-icons/blog" class="is-size-7" title="blog icons">Blog icons created by Freepik - Flaticon</a>
+</a>
+  </div>
 </footer>
 
 
@@ -79,7 +94,7 @@
 {{#if logged_in}}
 <script src='/js/logout.js'></script>
 {{/if}}
-
+<script src='/js/navburger.js'></script>
 </body>
 
 </html>

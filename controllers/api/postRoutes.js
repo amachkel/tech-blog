@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 // /api/posts/
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
 });
 
 // update /api/posts/:id
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   console.log('put request called');
   try {
     const updatePost = await Post.update(

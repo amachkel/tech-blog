@@ -1,23 +1,18 @@
 <div class='container'>
   <div class='card'>
-    <header class='card-header'>
-      <p class='card-header-title'>
+    <header class='card-header has-background-light'>
+      <p class='card-header-title has-text-weight-bold'>
         {{title}}
       </p>
     </header>
     <div class='card-content'>
       <div class='content'>
-        <p>{{content}}</p>
+        <p class="has-text-weight-bold">{{content}}</p>
+        <footer class='card-footer'>
         <p>Posted by {{user.name}} on {{format_date date_created}}</p>
+        </footer>
       </div>
     </div>
-    <footer class='card-footer'>
-      <a href='#' class='card-footer-item'>Edit</a>
-      <a href='#' class='card-footer-item'>
-        <span class='icon'>
-          <i class='fal fa-trash-alt'></i>
-        </span></a>
-    </footer>
   </div>
 
     {{#each comments as |comment|}}
@@ -25,18 +20,16 @@
         <div class='card-content'>
           <div class='content'>
             <p>{{comment.content}}</p>
-            <p>Posted by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+            
           </div>
         </div>
         <footer class='card-footer'>
-          <a href='#' class='card-footer-item'>Submit</a>
-          <a href='#' class='card-footer-item'>Edit</a>
-          <a href='#' class='card-footer-item'>Delete</a>
+          <p class="pl-5">Posted by {{comment.user.name}} on {{format_date comment.date_created}}</p>
         </footer>
       </div>
     {{/each}}
   </div>
-  <form class='column is-half is-offset-one-quarter box new-comment-form p-4'>
+  <form class='column card is-half is-offset-one-quarter box new-comment-form p-4'>
  <div class='field'>
    <input type="text" id='post-id' value={{id}} hidden='hidden'/>
       <textarea
