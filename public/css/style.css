@@ -20,6 +20,23 @@ body {
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
+p {
+  margin: 1rem;
+}
+.full-size {
+  height: 100vh;
+}
+.form-height {
+  height: 50vh;
+}
+/* .centerall {
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+} */
 .main {
   display: flex;
   min-height: 100vh;

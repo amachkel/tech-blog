@@ -18,7 +18,7 @@
 
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -28,7 +28,7 @@
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
+        <div class="navbar-start is-size-4">
             <a href='/' class="navbar-item">
                 Home
             </a>
@@ -43,7 +43,7 @@
     </div>
     <div class="navbar-end">
         <div class="navbar-item">
-            <div class="buttons">
+            <div class="buttons are-medium">
                 <!-- Conditionally render login or logout links -->
                 {{#if logged_in}}
 
@@ -70,7 +70,7 @@
         </p>
     </div>
 </section>
-<main class='container container-fluid mt-5'>
+<main class='container full-size container-fluid mt-5'>
     <!-- Render the sub layout -->
     {{{body}}}
 </main>

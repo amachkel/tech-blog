@@ -4,6 +4,9 @@
     <h2 class='subtitle'>
       Welcome to your dashboard.
     </h2>
+    {{#unless posts.length}}
+      <h3>It looks like you haven't posted anything yet.</h3>
+    {{/unless}}
   </section>
   {{#if posts.length}}
     <main class='container container-fluid mt-5'>
@@ -12,32 +15,29 @@
         <div class='post'>
           <div class='center'>
             <div class='card'><a href='/post/{{post.id}}'>
-              <header class='card-header'>
-                <p class='card-header-title has-text-weight-bold'>
-                  {{post.title}}
-                </p>
-              </header></a>
+                <header class='card-header'>
+                  <p class='card-header-title is-size-3 has-text-weight-bold'>
+                    {{post.title}}
+                  </p>
+                </header></a>
               <div class='card-body'>
                 <p>Posted on
                   {{format_date post.date_created}}</p>
               </div>
             </div>
-            <footer class='card-footer'>
-              <a
-                href='/edit/{{id}}'
-                data-id='{{post.id}}'
-                class='card-footer-item'
-              >Edit</a>
-              <a data-id='{{post.id}}'
-                class='card-footer-item'
-                id='delete'
-              >
-                Delete</a>
+            <footer class='block has-text-centered'>
+              <a href='/edit/{{id}}' data-id='{{post.id}}'><button
+                  class='button is-info is-medium'
+                >Edit</button>
+              </a>
+              <button
+                data-id={{post.id}}
+                class='button is-danger is-medium destroy'
+              >Delete</button>
             </footer>
           </div>
         </div>
       {{/each}}
-      {{else}}<p class="pl-6">It looks like you haven't posted anything yet.</p>
     </main>
   {{/if}}
 </div>
