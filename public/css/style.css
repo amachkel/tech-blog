@@ -9,7 +9,7 @@ body {
 }
 
 .hero {
-  background-image: url('../assets/tech-unsplash.png');
+  background-image: url('../assets/hero.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
