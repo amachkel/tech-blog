@@ -15,7 +15,7 @@ Developers spend plenty of time creating new applications and debugging existing
 
  ## Usage
  
-   [Visit the deployed app here!](https://tech-blog-amkh.herokuapp.com)
+  ### [Visit the deployed app here!](https://tech-blog-amkh.herokuapp.com)
   ![landing](https://user-images.githubusercontent.com/84882398/162536571-41aac66b-c432-4c99-9418-833928dab56e.png)
 
   ![dashboard](https://user-images.githubusercontent.com/84882398/162536587-de16afbd-d567-415a-823c-3eb69019382e.png)
