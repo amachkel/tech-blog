@@ -108,7 +108,7 @@ router.get('/post/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         { model: User, attributes: ['name'] },
-        // this broke the page
+
         {
           model: Comment,
           attributes: ['id', 'content', 'user_id', 'post_id', 'date_created'],
