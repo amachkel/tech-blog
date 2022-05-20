@@ -30,7 +30,6 @@ Back End:
 * Mysql
 * Sequelize
 * Express.js
-* Handlebars.js
 * Express-session npm package
 
 ## Contributors
