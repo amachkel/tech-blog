@@ -22,7 +22,8 @@ Front End:
 * HTML
 * CSS
 * JavaScript
-* Bulma
+* Bulma.io (CSS Framework)
+* Handlebars.js (templating language)
 
 Back End:
 * Node.js
